@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { ipcRenderer } from 'electron'
 import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  useEffect(() => {
+    ipcRenderer.send('say-hello')
+  })
   return (
     <div className="App">
       <header className="App-header">

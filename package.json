@@ -1,8 +1,14 @@
 {
   "name": "electron-cra",
   "version": "0.1.0",
-  "main": "main.js",
+  "main": "./main.js",
+  "homepage": "./",
   "private": true,
+  "author": {
+    "name": "s0b3ar",
+    "email": "pavelkarkh@gmail.com",
+    "url": "https://github.com/s0b3ar/electron-cra"
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
@@ -15,10 +21,11 @@
   },
   "scripts": {
     "dev": "concurrently \"cross-env BROWSER=none yarn start\" \"wait-on http://localhost:3000 && electron .\"",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "rescripts start",
+    "build": "rescripts build",
+    "test": "rescripts test",
+    "eject": "rescripts eject",
+    "package": "yarn build && electron-packager . --out release"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -36,9 +43,11 @@
     ]
   },
   "devDependencies": {
+    "@rescripts/cli": "^0.0.14",
+    "@rescripts/rescript-env": "^0.0.12",
     "concurrently": "^5.2.0",
     "electron": "^8.2.4",
-    "electron-builder": "^22.6.0",
+    "electron-packager": "^14.2.1",
     "wait-on": "^4.0.2"
   }
 }

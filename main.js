@@ -1,20 +1,22 @@
-const electron = require('electron');
-const app = electron.app;
-const BrowserWindow = electron.BrowserWindow;
+const { app, BrowserWindow, ipcMain } = require('electron')
 
 const path = require('path');
 const isDev = require('electron-is-dev');
 
 const PORT = process.env.PORT || 3000
-
-let mainWindow;
+let mainWindow = null;
 
 function createWindow() {
-  mainWindow = new BrowserWindow({width: 900, height: 680});
-  mainWindow.loadURL(isDev ? `http://localhost:${PORT}` : `file://${path.join(__dirname, '../build/index.html')}`);
+  mainWindow = new BrowserWindow({
+    width: 900,
+    height: 680,
+    webPreferences: {
+      nodeIntegration: true
+    }
+  });
+  mainWindow.loadURL(isDev ? `http://localhost:${PORT}` : `file://${path.join(__dirname, 'build/index.html')}`);
+
   if (isDev) {
-    // Open the DevTools.
-    //BrowserWindow.addDevToolsExtension('<location to your react chrome extension>');
     mainWindow.webContents.openDevTools();
   }
   mainWindow.on('closed', () => mainWindow = null);
@@ -33,3 +35,7 @@ app.on('activate', () => {
     createWindow();
   }
 });
+
+ipcMain.on('say-hello', () => {
+  console.log('hello from renderer process')
+})

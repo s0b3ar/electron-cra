@@ -1,13 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { HashRouter, Route } from 'react-router-dom'
 import './index.css';
 import App from './App';
+import SecondPage from './components/SecondPage'
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <HashRouter>
+    <Route exact path="/" component={App} />
+    <Route exact path="/second-page" component={SecondPage} />
+  </HashRouter>,
   document.getElementById('root')
 );
 

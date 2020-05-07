@@ -1,5 +1,5 @@
 # electron-cra
-Electron boilerplate with create react app
+Electron boilerplate with create-react-app and small changes in webpack with @rescripts for normal work Electron ipcRenderer process
 
 Add boilerplate
 
@@ -15,7 +15,7 @@ rm -rf .git
 git init
 git remote add origin git@your-remote
 ```
-create first commit and
+create first commit and push
 ```bash
 git push -u origin master
 ```

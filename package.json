@@ -22,12 +22,11 @@
     "react-scripts": "3.4.1"
   },
   "scripts": {
-    "dev": "concurrently \"cross-env BROWSER=none yarn start\" \"wait-on http://localhost:3000 && electron .\"",
-    "start": "rescripts start",
-    "build": "rescripts build",
-    "test": "rescripts test",
-    "eject": "rescripts eject",
-    "package": "yarn build && electron-packager . --out release"
+    "dev": "concurrently \"cross-env BROWSER=none yarn start\" \"wait-on http://localhost:3000 && electron ./main.js\"",
+    "start": "cross-env NODE_ENV=production electron ./build/electron/main.prod.js",
+    "react-start": "rescripts start",
+    "react-build": "rescripts build",
+    "package": "yarn react-build && electron-packager . --out release"
   },
   "eslintConfig": {
     "extends": "react-app"

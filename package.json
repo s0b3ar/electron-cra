@@ -14,7 +14,7 @@
     "start": "cross-env NODE_ENV=production electron ./build/electron/main.prod.js",
     "react-start": "rescripts start",
     "react-build": "rescripts build",
-    "package": "yarn react-build && yarn build-main && electron-packager . --out release --asar --ignore=\"\\.git(ignore|modules)\""
+    "package": "yarn react-build && yarn build-main && electron-packager . --out release --asar --ignore=\"\\.git(ignore|modules)\" --overwrite"
   },
   "dependencies": {
     "cross-env": "^7.0.2",

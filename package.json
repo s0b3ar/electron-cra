@@ -9,6 +9,14 @@
     "email": "pavelkarkh@gmail.com",
     "url": "https://github.com/s0b3ar/electron-cra"
   },
+  "scripts": {
+    "dev": "concurrently \"cross-env BROWSER=none yarn start\" \"wait-on http://localhost:3000 && electron ./main.js\"",
+    "build-main": "yarn webpack --config ./configs/webpack.main.js",
+    "start": "cross-env NODE_ENV=production electron ./build/electron/main.prod.js",
+    "react-start": "rescripts start",
+    "react-build": "rescripts build",
+    "package": "yarn react-build && yarn build-main && electron-packager . --out release"
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
@@ -21,12 +29,14 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1"
   },
-  "scripts": {
-    "dev": "concurrently \"cross-env BROWSER=none yarn start\" \"wait-on http://localhost:3000 && electron ./main.js\"",
-    "start": "cross-env NODE_ENV=production electron ./build/electron/main.prod.js",
-    "react-start": "rescripts start",
-    "react-build": "rescripts build",
-    "package": "yarn react-build && electron-packager . --out release"
+  "devDependencies": {
+    "@rescripts/cli": "^0.0.14",
+    "@rescripts/rescript-env": "^0.0.12",
+    "concurrently": "^5.2.0",
+    "electron": "8.2.4",
+    "electron-packager": "14.2.1",
+    "wait-on": "^4.0.2",
+    "webpack-cli": "^3.3.11"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -42,13 +52,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "@rescripts/cli": "^0.0.14",
-    "@rescripts/rescript-env": "^0.0.12",
-    "concurrently": "^5.2.0",
-    "electron": "^8.2.4",
-    "electron-packager": "^14.2.1",
-    "wait-on": "^4.0.2"
   }
 }

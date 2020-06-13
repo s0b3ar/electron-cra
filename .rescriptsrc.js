@@ -1,16 +1,14 @@
 module.exports = {
   webpack: function(config) {
-    const newConfig = {
+    return {
       ...config,
       target: 'electron-renderer',
     }
-    return newConfig
   },
   devServer: function(config) {
-    const newConfig = {
+    return {
       ...config,
-      headers: { "Access-Control-Allow-Origin": "*" }
+      headers: {"Access-Control-Allow-Origin": "*"}
     }
-    return newConfig
   },
 }
